@@ -38,6 +38,8 @@ public class SimpleConnectionManager implements ConnectionManager {
 		Connection masterConn = tryGetConnection(masterConnectionPool);
 		if (masterConn != null) return masterConn;
 
+		log.debug("Master pool is unavailable, trying to acquire from Slave");
+
 		// then slaves
 		for (ConnectionPool slaveConnectionPool : slaveConnectionPools) {
 			Connection slaveConn = tryGetConnection(slaveConnectionPool);

@@ -87,7 +87,7 @@ public class SimpleConnectionPool implements ConnectionPool {
 	@Override
 	public void shutdown() throws SQLException {
 
-		log.debug("Closing all connections");
+		log.debug("Closing all connections {}", url);
 		for (final Connection connection : connectionPool) {
 			if (!connection.isClosed())
 				connection.close();
